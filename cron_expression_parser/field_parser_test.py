@@ -34,5 +34,21 @@ class TestField(unittest.TestCase):
         with self.assertRaises(ValueError):
             field.parse()
 
+    # def test_field_parse_step(self):
+    #     field = Field("month", "*/5,1-7")
+    #     field.parse()
+    #     self.assertEqual(field.values, [1, 3, 5, 7, 9, 11])
+
+    def test_field_parse_range(self):
+        field = Field("day of week", "MON-WED")
+        field.parse()
+        self.assertEqual(field.values, [1, 2, 3])
+
+    def test_field_parse_range(self):
+        field = Field("day of week", "MON-4")
+        field.parse()
+        self.assertEqual(field.values, [1, 2, 3, 4])
+
+
 if __name__ == '__main__':
     unittest.main()
